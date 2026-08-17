@@ -1,0 +1,19 @@
+[build]
+  command = "pnpm run build"
+  publish = "dist"
+
+# SPA fallback: TanStack Router owns client-side routes like /catalog and
+# /checklist/$id — without this, Netlify's static server 404s on a direct
+# load or hard refresh of anything but "/", online or offline.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Never let Netlify's CDN cache the service worker itself — the SW's own
+# byte-diffing is how vite-plugin-pwa's "autoUpdate" ships new versions;
+# an aggressively-cached sw.js would prevent that.
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"

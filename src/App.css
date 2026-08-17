@@ -132,10 +132,22 @@
   border: 1px solid #8885;
   white-space: nowrap;
 }
-.sync-badge.pending { color: #b8860b; border-color: #b8860b; }
-.sync-badge.syncing { color: #4682b4; border-color: #4682b4; }
-.sync-badge.synced { color: #2e8b57; border-color: #2e8b57; }
-.sync-badge.failed { color: #c0392b; border-color: #c0392b; }
+.sync-badge.pending {
+  color: #b8860b;
+  border-color: #b8860b;
+}
+.sync-badge.syncing {
+  color: #4682b4;
+  border-color: #4682b4;
+}
+.sync-badge.synced {
+  color: #2e8b57;
+  border-color: #2e8b57;
+}
+.sync-badge.failed {
+  color: #c0392b;
+  border-color: #c0392b;
+}
 
 .status-badge {
   font-size: 0.75em;
@@ -144,9 +156,18 @@
   white-space: nowrap;
   font-weight: 600;
 }
-.status-badge.draft { background: #8885; color: inherit; }
-.status-badge.in_progress { background: #4682b433; color: #4682b4; }
-.status-badge.completed { background: #2e8b5733; color: #2e8b57; }
+.status-badge.draft {
+  background: #8885;
+  color: inherit;
+}
+.status-badge.in_progress {
+  background: #4682b433;
+  color: #4682b4;
+}
+.status-badge.completed {
+  background: #2e8b5733;
+  color: #2e8b57;
+}
 
 .badge-group {
   display: flex;
@@ -172,8 +193,12 @@
   border-radius: 50%;
   display: inline-block;
 }
-.online-dot.online { background: #2e8b57; }
-.online-dot.offline { background: #c0392b; }
+.online-dot.online {
+  background: #2e8b57;
+}
+.online-dot.offline {
+  background: #c0392b;
+}
 
 .sync-failure-banner {
   border: 1px solid #c0392b;
@@ -277,4 +302,37 @@
 .saved-toast {
   font-size: 0.8em;
   color: #2e8b57;
+}
+
+.ReloadPrompt-container {
+  padding: 0;
+  margin: 0;
+  width: 0;
+  height: 0;
+}
+.ReloadPrompt-date {
+  visibility: hidden;
+}
+.ReloadPrompt-toast {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 16px;
+  padding: 12px;
+  border: 1px solid #8885;
+  border-radius: 4px;
+  z-index: 1;
+  text-align: left;
+  box-shadow: 3px 4px 5px 0 #8885;
+  background-color: white;
+}
+.ReloadPrompt-toast-message {
+  margin-bottom: 8px;
+}
+.ReloadPrompt-toast-button {
+  border: 1px solid #8885;
+  outline: none;
+  margin-right: 5px;
+  border-radius: 2px;
+  padding: 3px 10px;
 }

@@ -32,10 +32,15 @@ export default defineConfig({
       globPatterns: ['**/*.{js,css,html,svg,png,ico}'],
       cleanupOutdatedCaches: true,
       clientsClaim: true,
+      // Required for offline navigation on any route besides the exact
+      // precached "/" (e.g. /catalog, /checklist/$id) — without this the SW
+      // only serves exact cache hits, so reloading offline on any other
+      // route falls straight through to the network and fails.
+      navigateFallback: 'index.html',
     },
 
     devOptions: {
-      enabled: true,
+      enabled: false,
       navigateFallback: 'index.html',
       suppressWarnings: true,
       type: 'module',
