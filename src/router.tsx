@@ -15,7 +15,6 @@ import SyncFailureBanner from './components/SyncFailureBanner'
 import DebugPanel from './components/DebugPanel'
 import SyncDebugPanel from './components/SyncDebugPanel'
 import './App.css'
-import ReloadPrompt from './components/ReloadPrompt.tsx'
 
 /**
  * Simple code-based routing (no file-based route generation/plugin) — kept
@@ -52,8 +51,6 @@ function RootLayout() {
       )}
 
       <Outlet />
-
-      <ReloadPrompt />
 
       <DebugPanel />
       <SyncDebugPanel />
