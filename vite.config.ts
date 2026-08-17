@@ -13,6 +13,15 @@ export default defineConfig({
       config: true,
     },
 
+    // No manual `icons` array here — `pwaAssets: { config: true }` below
+    // already generates and injects it automatically from
+    // pwa-assets.config.ts. Listing icons manually here as well caused each
+    // one to be registered for precaching twice (once via the normal
+    // workbox globPatterns disk scan, once via this array), with two
+    // different content hashes each time — which throws
+    // "add-to-cache-list-conflicting-entries" synchronously at the top of
+    // the service worker script, before any of its event listeners ever get
+    // registered. That's what broke offline entirely on the deployed site.
     manifest: {
       name: 'InField Offline POC',
       short_name: 'InField POC',
@@ -20,12 +29,6 @@ export default defineConfig({
       theme_color: '#23431f',
       background_color: '#23431f',
       display: 'standalone',
-      icons: [
-        { src: 'pwa-64x64.png', sizes: '64x64', type: 'image/png' },
-        { src: 'pwa-192x192.png', sizes: '192x192', type: 'image/png' },
-        { src: 'pwa-512x512.png', sizes: '512x512', type: 'image/png' },
-        { src: 'maskable-icon-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
-      ],
     },
 
     workbox: {
