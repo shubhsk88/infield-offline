@@ -37,10 +37,17 @@ export default defineConfig({
       // only serves exact cache hits, so reloading offline on any other
       // route falls straight through to the network and fails.
       navigateFallback: 'index.html',
+      // Default generateSW output splits the workbox runtime into a
+      // separately-loaded chunk (workbox-xxxx.js), pulled in from inside the
+      // install handler via a dynamic importScripts loader shim. Inlining it
+      // avoids that indirection entirely — one self-contained sw.js, no
+      // async module loading between the SW starting up and its install
+      // listener actually being registered.
+      inlineWorkboxRuntime: true,
     },
 
     devOptions: {
-      enabled: false,
+      enabled: true,
       navigateFallback: 'index.html',
       suppressWarnings: true,
       type: 'module',
