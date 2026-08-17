@@ -1,8 +1,10 @@
 import { useSyncQueue } from '../hooks/useSyncQueue'
 import { useOnlineStatus } from '../hooks/useOnlineStatus'
+import { useOfflineReady } from '../hooks/useOfflineReady'
 
 export default function SyncIndicator() {
   const online = useOnlineStatus()
+  const offlineReady = useOfflineReady()
   const { pendingCount, runningCount, failedCount } = useSyncQueue()
 
   let summary = 'All synced'
@@ -16,6 +18,13 @@ export default function SyncIndicator() {
       <span>{online ? 'Online' : 'Offline'}</span>
       <span>·</span>
       <span>{summary}</span>
+      <span>·</span>
+      <span
+        className={`offline-ready-pill ${offlineReady ? 'ready' : 'not-ready'}`}
+        title={offlineReady ? 'The app shell is cached and will work with no network' : 'Still preparing offline support'}
+      >
+        {offlineReady ? '✓ Offline-ready' : 'Preparing offline support…'}
+      </span>
     </div>
   )
 }
